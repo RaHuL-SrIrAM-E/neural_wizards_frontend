@@ -90,6 +90,17 @@ function App() {
         
         setDocuments(prev => [...prev, newDoc]);
         showToast('Document uploaded successfully!', 'success');
+        
+        // Add AI message with recommendations if provided
+        if (responseData.recommendations) {
+          const aiMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            content: responseData.recommendations,
+            sender: 'ai',
+            timestamp: new Date(),
+          };
+          setMessages(prev => [...prev, aiMessage]);
+        }
       } else {
         throw new Error(responseData.message || 'Upload failed');
       }

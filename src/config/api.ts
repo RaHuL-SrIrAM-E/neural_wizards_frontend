@@ -3,7 +3,7 @@
 
 export const API_CONFIG = {
   // Backend base URL - update this when switching environments
-  BASE_URL: 'https://d5b4c6929a81.ngrok-free.app',
+  BASE_URL: 'https://6887bb0c9925.ngrok-free.app',
   
   // API endpoints
   ENDPOINTS: {
