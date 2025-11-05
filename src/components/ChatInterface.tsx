@@ -58,17 +58,17 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
     : messages;
 
   return (
-    <div className="flex-1 flex flex-col bg-black/10 backdrop-blur-sm">
+    <div className="flex-1 flex flex-col bg-white">
       {/* Header */}
-      <div className="bg-black/20 backdrop-blur-xl border-b border-white/10 p-6">
+      <div className="bg-wf-red border-b border-wf-red-dark p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-wf-red to-wf-yellow rounded-full flex items-center justify-center">
               <Bot className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-semibold">AI Document Assistant</h1>
-              <p className="text-sm text-gray-400">
+              <h1 className="text-xl font-semibold text-white">AI Document Assistant</h1>
+              <p className="text-sm text-white/80">
                 {hasDocuments ? 'Ready to analyze your documents' : 'Upload documents to start chatting'}
               </p>
             </div>
@@ -77,13 +77,13 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
           <div className="flex items-center gap-4">
             <ConnectionStatus onStatusChange={setIsBackendConnected} />
             <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search messages..."
-              className="bg-white/10 border border-white/20 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-wf-red transition-colors"
+              className="bg-white/20 border border-white/40 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-white/60 focus:outline-none focus:border-white transition-colors"
             />
             </div>
           </div>
@@ -91,22 +91,22 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
         {!hasDocuments && (
           <div className="text-center py-8">
-            <FileText className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Welcome to your AI Document Assistant</h3>
-            <p className="text-gray-400 mb-6 max-w-md mx-auto">
+            <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2 text-gray-900">Welcome to your AI Document Assistant</h3>
+            <p className="text-gray-600 mb-6 max-w-md mx-auto">
               Upload your PDF or DOCX documents using the sidebar, and I'll help you analyze, 
               summarize, and answer questions about them.
             </p>
             <div className="grid grid-cols-1 gap-2 max-w-lg mx-auto">
-              <h4 className="text-sm font-medium text-gray-300 mb-2">Try these sample questions:</h4>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">Try these sample questions:</h4>
               {sampleQuestions.map((question, index) => (
                 <button
                   key={index}
                   onClick={() => setInputValue(question)}
-                  className="text-left text-sm bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-3 transition-colors text-gray-300 hover:text-white"
+                  className="text-left text-sm bg-white hover:bg-gray-100 border border-gray-300 rounded-lg p-3 transition-colors text-gray-700 hover:text-gray-900"
                 >
                   "{question}"
                 </button>
@@ -124,7 +124,7 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
       </div>
 
       {/* Input */}
-      <div className="bg-black/20 backdrop-blur-xl border-t border-white/10 p-6">
+      <div className="bg-white border-t border-gray-300 p-6">
         <form onSubmit={handleSubmit} className="flex gap-4">
           <div className="flex-1 relative">
             <textarea
@@ -135,7 +135,7 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
               placeholder="Ask me anything about your documents..."
               disabled={!hasDocuments || isLoading}
               rows={1}
-              className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-wf-red focus:ring-2 focus:ring-wf-red/20 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-wf-red focus:ring-2 focus:ring-wf-red/20 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ minHeight: '48px', maxHeight: '120px' }}
             />
           </div>
@@ -148,7 +148,7 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
           </button>
         </form>
         <div className="flex items-center justify-between mt-2">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-600">
             Press Enter to send • Shift + Enter for new line
           </p>
           {!isBackendConnected && (
