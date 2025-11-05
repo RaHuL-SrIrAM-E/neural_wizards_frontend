@@ -40,10 +40,10 @@
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(215, 30, 40, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 40px rgba(215, 30, 40, 0.6);
   }
 }
 
@@ -94,7 +94,7 @@ input:focus,
 textarea:focus {
   outline: none;
   ring: 2px;
-  ring-color: rgba(59, 130, 246, 0.5);
+  ring-color: rgba(215, 30, 40, 0.5);
 }
 
 /* Responsive text sizing */

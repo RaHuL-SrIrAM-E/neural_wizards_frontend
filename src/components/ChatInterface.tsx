@@ -63,7 +63,7 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
       <div className="bg-black/20 backdrop-blur-xl border-b border-white/10 p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-wf-red to-wf-yellow rounded-full flex items-center justify-center">
               <Bot className="w-4 h-4 text-white" />
             </div>
             <div>
@@ -83,7 +83,7 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search messages..."
-              className="bg-white/10 border border-white/20 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+              className="bg-white/10 border border-white/20 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-wf-red transition-colors"
             />
             </div>
           </div>
@@ -135,14 +135,14 @@ function ChatInterface({ messages, onSendMessage, isLoading, hasDocuments }: Cha
               placeholder="Ask me anything about your documents..."
               disabled={!hasDocuments || isLoading}
               rows={1}
-              className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-wf-red focus:ring-2 focus:ring-wf-red/20 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ minHeight: '48px', maxHeight: '120px' }}
             />
           </div>
           <button
             type="submit"
             disabled={!inputValue.trim() || !hasDocuments || isLoading || !isBackendConnected}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 text-white p-3 rounded-xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center"
+            className="bg-gradient-to-r from-wf-red to-wf-yellow hover:from-wf-red-dark hover:to-wf-yellow-dark disabled:from-gray-600 disabled:to-gray-700 text-white p-3 rounded-xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center"
           >
             <Send className="w-5 h-5" />
           </button>

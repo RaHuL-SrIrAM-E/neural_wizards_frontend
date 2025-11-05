@@ -57,7 +57,7 @@ function ParticleBackground() {
 
         // Draw particle
         ctx.globalAlpha = particle.alpha;
-        ctx.fillStyle = '#3B82F6';
+        ctx.fillStyle = '#FFCD41';
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
@@ -72,7 +72,7 @@ function ParticleBackground() {
 
           if (distance < 100) {
             ctx.globalAlpha = (100 - distance) / 100 * 0.2;
-            ctx.strokeStyle = '#3B82F6';
+            ctx.strokeStyle = '#D71E28';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);

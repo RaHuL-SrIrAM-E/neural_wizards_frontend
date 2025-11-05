@@ -31,7 +31,7 @@ function DocumentSidebar({ documents, onDocumentUpload, onDeleteDocument, isLoad
     <div className="w-80 bg-black/20 backdrop-blur-xl border-r border-white/10 flex flex-col">
       <div className="p-6 border-b border-white/10">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-semibold bg-gradient-to-r from-wf-red to-wf-yellow bg-clip-text text-transparent">
             Documents
           </h2>
           <span className="text-sm text-gray-400 bg-white/10 px-2 py-1 rounded-full">
@@ -41,7 +41,7 @@ function DocumentSidebar({ documents, onDocumentUpload, onDeleteDocument, isLoad
         
         <button
           onClick={() => setShowUpload(true)}
-          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2"
+          className="w-full bg-gradient-to-r from-wf-red to-wf-yellow hover:from-wf-red-dark hover:to-wf-yellow-dark text-white py-3 px-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-wf-red/25 flex items-center justify-center gap-2"
         >
           <Upload className="w-4 h-4" />
           Upload Document
