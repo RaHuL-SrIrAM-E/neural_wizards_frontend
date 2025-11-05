@@ -14,7 +14,6 @@ export const API_CONFIG = {
   
   // Request configuration
   REQUEST: {
-    TIMEOUT: 30000, // 30 seconds
     HEADERS: {
       NGROK_SKIP_WARNING: 'ngrok-skip-browser-warning',
     },

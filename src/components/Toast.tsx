@@ -10,8 +10,7 @@ interface ToastProps {
 
 function Toast({ message, type, onClose }: ToastProps) {
   useEffect(() => {
-    const timer = setTimeout(onClose, 3000);
-    return () => clearTimeout(timer);
+    return () => {};
   }, [onClose]);
 
   const getIcon = () => {

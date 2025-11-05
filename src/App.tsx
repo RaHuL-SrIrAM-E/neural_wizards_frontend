@@ -24,7 +24,6 @@ function App() {
 
   const showToast = useCallback((message: string, type: ToastType) => {
     setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
   }, []);
 
   const handleDocumentUpload = useCallback(async (file: File) => {
@@ -54,22 +53,15 @@ function App() {
 
     try {
       setIsLoading(true);
-      
-      // Add timeout and better error handling
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.REQUEST.TIMEOUT);
-      
+
       const response = await fetch(buildApiUrl('UPLOAD'), {
         method: 'POST',
         body: formData,
-        signal: controller.signal,
         headers: {
           [API_CONFIG.REQUEST.HEADERS.NGROK_SKIP_WARNING]: 'true',
           // Don't set Content-Type header - let browser set it with boundary for FormData
         },
       });
-      
-      clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -106,11 +98,9 @@ function App() {
       }
     } catch (error) {
       console.error('Upload error:', error);
-      
+
       if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          showToast('Upload timed out. Please try again.', 'error');
-        } else if (error.message.includes('Failed to fetch')) {
+        if (error.message.includes('Failed to fetch')) {
           showToast(BACKEND_CONNECTION_ERROR, 'error');
         } else {
           showToast(`Upload failed: ${error.message}`, 'error');
@@ -135,10 +125,7 @@ function App() {
 
     try {
       setIsLoading(true);
-      
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.REQUEST.TIMEOUT);
-      
+
       const response = await fetch(buildApiUrl('QUERY'), {
         method: 'POST',
         headers: {
@@ -146,10 +133,7 @@ function App() {
           [API_CONFIG.REQUEST.HEADERS.NGROK_SKIP_WARNING]: 'true',
         },
         body: JSON.stringify({ query: content }),
-        signal: controller.signal,
       });
-      
-      clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -173,11 +157,9 @@ function App() {
       console.error('Query error:', error);
       
       let errorContent = "I'm having trouble connecting to the server. Please try again.";
-      
+
       if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          errorContent = "Request timed out. Please try again.";
-        } else if (error.message.includes('Failed to fetch')) {
+        if (error.message.includes('Failed to fetch')) {
           errorContent = BACKEND_CONNECTION_ERROR;
         } else if (error.message.includes('Query failed')) {
           errorContent = `Server error: ${error.message}`;

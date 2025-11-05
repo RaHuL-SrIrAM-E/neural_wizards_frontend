@@ -13,18 +13,13 @@ function ConnectionStatus({ onStatusChange }: ConnectionStatusProps) {
   const checkConnection = async () => {
     setIsChecking(true);
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
-      
       const response = await fetch(buildApiUrl('HEALTH'), {
         method: 'GET',
-        signal: controller.signal,
         headers: {
           [API_CONFIG.REQUEST.HEADERS.NGROK_SKIP_WARNING]: 'true',
         },
       });
-      
-      clearTimeout(timeoutId);
+
       const connected = response.ok;
       setIsConnected(connected);
       onStatusChange?.(connected);
